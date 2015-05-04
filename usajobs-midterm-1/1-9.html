@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+  </head>
+  <body>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["geochart"]});
+      google.setOnLoadCallback(drawRegionsMap);
+
+      function drawRegionsMap() {
+
+        var data = [['State', 'Job Count'], ['RI', 41], ['CA', 694], ['NJ', 137], ['CT', 78], ['AK', 234], ['AL', 242], ['MT', 182], ['PA', 235], ['MS', 178], ['ND', 118], ['ID', 158], ['OH', 277], ['SD', 241], ['TX', 619], ['GA', 397], ['DE', 52], ['NV', 173], ['IN', 168], ['HI', 181], ['WV', 146], ['MA', 241], ['MD', 376], ['WI', 157], ['SC', 214], ['MI', 251], ['OK', 353], ['DC', 887], ['ME', 52], ['NE', 163], ['WY', 152], ['CO', 384], ['IL', 280], ['NM', 360], ['UT', 229], ['MN', 189], ['KS', 164], ['NY', 368], ['FL', 335], ['WA', 405], ['VT', 31], ['IA', 96], ['LA', 232], ['NC', 292], ['NH', 66], ['KY', 178], ['MO', 268], ['TN', 195], ['AR', 165], ['VA', 612], ['OR', 250], ['AZ', 416]]
+        var datatable = google.visualization.arrayToDataTable(data);
+        var options = {'region': 'US', 'width': 600, 'height': 400, 'resolution': 'provinces'};
+
+        var chart = new google.visualization.GeoChart(document.getElementById('mychart'));
+
+        chart.draw(datatable, options);
+      }
+    </script>
+
+
+      <div class="container">
+        <h3 style="text-align:center">How many jobs in each state?</h3>
+        <div id="mychart"></div>
+      </div>
+  </body>
+</html>

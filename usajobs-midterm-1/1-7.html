@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Which state has the biggest "slice" of jobs?</title>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+  </head>
+  <body>
+    <script type="text/javascript">
+      google.load("visualization", '1.1', {packages:['corechart']});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = [['State', 'Job Count'], ['California', 694], ['Florida', 335], ['Maryland', 377], ['New York', 368]]
+
+        var datatable = google.visualization.arrayToDataTable(data);
+        var options = {
+          width: 600,
+          height: 400,
+          legend: { position: 'none' },
+        };
+        var chart = new google.visualization.PieChart(document.getElementById('mychart'));
+        chart.draw(datatable, options);
+    }
+    </script>
+
+      <div class="container">
+        <h3 style="text-align:center">Which state has the biggest "slice" of jobs?</h3>
+        <div id="mychart"></div>
+      </div>
+  </body>
+</html>

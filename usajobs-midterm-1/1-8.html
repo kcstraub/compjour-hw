@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+  </head>
+  <body>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["geochart"]});
+      google.setOnLoadCallback(drawRegionsMap);
+
+      function drawRegionsMap() {
+
+        var data = [['State', 'Job Count'], ['CA', 694], ['FL', 335], ['MD', 375], ['NY', 368]]
+        var datatable = google.visualization.arrayToDataTable(data);
+        var options = {'region': 'US', 'width': 600, 'height': 400, 'resolution': 'provinces'};
+
+        var chart = new google.visualization.GeoChart(document.getElementById('mychart'));
+
+        chart.draw(datatable, options);
+      }
+    </script>
+
+
+      <div class="container">
+        <h3 style="text-align:center">How many jobs in each state?</h3>
+        <div id="mychart"></div>
+      </div>
+  </body>
+</html>

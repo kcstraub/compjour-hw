@@ -101,17 +101,4 @@ for q in quakes:
 print('M.', basemap_url + '&' + markers_str)
 
 orange_str = 'markers=color:orange'
-red_str = 'markers=color:red'
-
-for q in quakes:
-		coords = q['geometry']['coordinates']
-		lng = str(coords[0])
-		lat = str(coords[1])
-		s = '%7C' + lat + ',' + lng
-
-		if q['properties']['mag'] >= 6:
-			red_str += s
-		else:
-			orange_str += s
-print('N.', basemap_url + '&' + orange_str + '&' + red_str)
-
+red_str = 'markers

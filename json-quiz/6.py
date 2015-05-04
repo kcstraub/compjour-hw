@@ -47,7 +47,18 @@ y = sorted(accounts, key = itemgetter('followers_count'), reverse = True)
 x = y[0]
 print("F.", x['screen_name'], 'has', x['followers_count'], 'followers.')
 
-print("I'm confused on G. for now, will get back to it later.")
+from operator import itemgetter
+vaccs = sorted(accounts, key = itemgetter('statuses_count'), reverse = True)
+accs = [a for a in vaccs if a['verified'] == False]
+x = accs[0]
+print("G.", x['screen_name'], 'has', x['statuses_count'], 'tweets')
 
-total = list(accounts['followers_count'][0:])
-print(total)
+totes = 0
+for a in accounts:
+	totes += a['followers_count']
+print("H.", round(totes / len(accounts)))
+
+from operator import itemgetter
+z =  sorted(accounts, key = itemgetter('followers_count'))
+m = z[len(z) // 2]
+print("I.", m['followers_count'])
