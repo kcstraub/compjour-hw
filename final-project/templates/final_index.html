@@ -1,0 +1,19 @@
+<html lang="en">
+    <head></head>
+    <body>
+        <h1> Rats, Insects, and Other Critters in Cafeterias of Chicago Schools: </h1>
+        <h3> Has your child's school failed the inspection? </h3>
+        <div>
+            {% for obj in object_list %} 
+            <p>
+                <h3> Name: {{ obj.AKA_Name }} </h3>
+                {{ obj.Address }}, {{ obj.City}} {{ obj.State }}
+            
+            </p>
+            {% endfor %}
+
+        </br>
+        </div>
+    </body>
+</html>
+
