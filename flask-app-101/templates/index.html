@@ -18,24 +18,18 @@
                 <th>Inspection Date</th>
                 <th>Inspection Type</th>
                 <th>Violations</th>
-                <th>Latitude</th>
-                <th>Longitude</th>
-                <th>Location</th>
             </tr>
             {% for obj in object_list %}
             <tr>
-                <td><a href="{{ obj.id }}/">{{ obj.DBA-Name }}</a></td>
+                <td><a href="{{ obj.Inspection_ID  }}/">{{ obj.DBA_Name }}</a></td>
                 <td>{{ obj.Risk }}</td>
                 <td>{{ obj.Address }}</td>
                 <td>{{ obj.City }}</td>
                 <td>{{ obj.State }}</td>
                 <td>{{ obj.Zip }}</td>
-                <td>{{ obj.Inspection-Date }}</td>
-                <td>{{ obj.Inspection-Type }}</td>
+                <td>{{ obj.Inspection_Date }}</td>
+                <td>{{ obj.Inspection_Type }}</td>
                 <td>{{ obj.Violations }}</td>
-                <td>{{ obj.Latitude }}</td>
-                <td>{{ obj.Longitude }}</td>
-                <td>{{ obj.Location }}</td>
             </tr>
             {% endfor %}
         </table>
@@ -54,7 +48,7 @@
                 {
                   "type": "Feature",
                   "properties": {
-                    "DBA-Name": "{{ obj.DBA-Name }}",
+                    "DBA_Name": "{{ obj.DBA_Name }}",
                     "id": "{{ obj.id }}"
                   },
                   "geometry": {
