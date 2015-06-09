@@ -1,29 +1,28 @@
-import csv
 from flask import Flask
+from flask import abort
 from flask import render_template
+from helpers.listers import get_school_list, get_inspections_list
+
 app = Flask(__name__)
 
-def get_csv():
-    csv_path = './static/Schools_Failed.csv'
-    csv_file = open(csv_path, 'r')
-    csv_obj = csv.DictReader(csv_file)
-    csv_list = list(csv_obj)
-    return csv_list
 
 
 @app.route("/")
 def index():
     template = 'final_index.html'
-    object_list = get_csv()
-    return render_template(template, object_list=object_list)
+    object_list = get_school_list()
+    return render_template(template, schools = object_list)
 
-@app.route('/<row_id>/')
+@app.route('/schools/<row_id>/')
 def detail(row_id):
     template = 'final_detail.html'
-    object_list = get_csv()
-    for row in object_list:
-        if row['AKA_Name'] == row_id:
-            return render_template(template, object=row)
+    inspection_list = get_inspections_list(row_id)
+    return render_template(template, school_name = row_id, inspections = inspection_list)
+    abort(404)
+
+@app.route("/summary/")
+def summary():
+    template = 'charts.html'
     return render_template(template)
 
 if __name__ == '__main__':

@@ -1,0 +1,33 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Summary Data</title>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+  </head>
+  <body>
+    <div id='left' class="container">
+    <script type="text/javascript">
+      google.load("visualization", '1.1', {packages:['corechart']});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = [['Failed_Times', 'Schools'], ['One Failed Inspection', 328], ['Two Failed Inspections', 174], ['Three Failed Inspections', 78], ['4+ Failed Inspections', 49]]
+
+        var datatable = google.visualization.arrayToDataTable(data);
+        var options = {
+          width: 300,
+          height: 200,
+          legend: { position: 'none' },
+        };
+        var chart = new google.visualization.PieChart(document.getElementById('mychart'));
+        chart.draw(datatable, options);
+    }
+    </script>
+
+        <h5 >How Many Inspections Have These Schools Failed Since 2010?</h5>
+        <div id="mychart"></div>
+    </div>
+  </body>
+</html>

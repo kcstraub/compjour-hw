@@ -1,1 +1,29 @@
-Hello world!
+{% include 'partials/head.html' %}
+
+
+<div class="container">
+        <h2> Violation Details for <i> {{ school_name }} </i> </h2>
+        
+        {% for inspection in inspections %}        
+
+        <div class="inspection">
+
+            <h3>Failed Inspection Date: {{inspection.Inspection_Date}} </h3>
+
+            <ul class="violations">
+
+                {% for v in inspection['parsed_violations'] %}
+
+                    <li> Violated Code {{ v }}</li>
+
+                {% endfor %}
+            </ul>
+
+        </div>  
+    
+        {% endfor %}
+
+
+</div>
+
+{% include 'partials/foot.html' %}
