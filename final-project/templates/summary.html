@@ -1,0 +1,23 @@
+{% include 'partials/head.html' %}
+
+<div class=container> 
+    <p style = text-align:left float=left><a href="/">Home</a> </p>
+    
+<h3> How many schools have failed more than one inspection?</h3>
+<p> </p>
+    {% include "charts.html" %}
+
+    <div id="{{chart_div_id}}" ></div>
+
+<h3> Which schools had the top number of failed inspections? (6+) </h3>
+
+    {% include "list.html" %}
+
+    <div id="{{ list_div_id }}" ></div> 
+
+<!--     I would have liked to insert some kind of bar chart or even just text here based on 
+    my pull_worst_performers function... -->
+
+</div>
+
+{% include 'partials/foot.html' %}

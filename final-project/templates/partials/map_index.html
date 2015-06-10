@@ -13,7 +13,8 @@
         {
           "type": "Feature",
           "properties": {
-            "aka_name": "{{ school.aka_name }}"
+            "aka_name": "{{ school.aka_name }}",
+            "license_number":"{{ school.license_number }}" 
           },
           "geometry": {
             "type": "Point",
@@ -25,7 +26,11 @@
     };
     var dataLayer = L.geoJson(data, {
         onEachFeature: function(feature, layer) {
-            layer.bindPopup(feature.properties.aka_name);
+            layer.bindPopup(
+              '<a href="' + feature.properties.license_number + '/">' +
+                            feature.properties.aka_name +
+                        '</a>'
+            );
         }
     });
 

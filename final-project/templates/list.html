@@ -1,0 +1,19 @@
+ <!-- I started to build the groundwork of a barchart here, because I wanted a way to add to the summary
+ data... ran into that issue with the def pull_worst_performers() -->
+
+ <script type="text/javascript">
+      google.load("visualization", '1.1', {packages:['corechart']});
+      google.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = {{ list_data | safe }}
+
+        var datatable = google.visualization.arrayToDataTable(data);
+        var options = {
+          width: 600,
+          height: 400,
+          legend: { position: 'none' },
+        };
+        var chart = new google.visualization.BarChart(document.getElementById('{{ list_div_id }}'));
+        chart.draw(datatable, options);
+    }
+    </script>

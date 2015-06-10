@@ -1,34 +1,47 @@
 {% include 'partials/head.html' %}
 
-
 <div class="container">
 
+<p style = text-align:left float=left><a href="/">Home</a> | What to see the bigger picture? See data summary <a href="/summary/"> here! </a></p>
 
-<p><a href="/">Home</a></p>
 
-
-        <h2> Violation Details for <i> {{ school_name }} </i> </h2>
+<div id="map" style="width:100%; height:300px;"></div>
+            <h2> {{ school_name }} </h2>
+            <p> Below find a full list of failed inspection dates since 2010 for {{ school_name }}, along with the specific health code violations discovered during each inspection date. To review the official document describing specificities of Chicago Health Codes, <a href="https://data.cityofchicago.org/api/assets/BAD5301B-681A-4202-9D25-51B2CAE672FF">click here. </a></p>
 
         {% for inspection in inspections %}
 
         <div class="inspection">
 
-            <h3>Failed Inspection Date: {{inspection.inspection_date}} </h3>
+            <h3><u>Failed Inspection Date: {{inspection.inspection_date}} </u> </h3>
 
             <ul class="violations">
 
                 {% for v in inspection['parsed_violations'] %}
 
-                    <li> Violated Code {{ v.category }}</li>
+                    <li> <b> IN VIOLATION OF CODE ({{ v.number }}): {{ v.category }} </b> </br></br> 
+                     <i> Reason for failure, from inspector notes: </br>{{v.comments}}</i> </li></br>
 
                 {% endfor %}
             </ul>
 
         </div>
+       <script type="text/javascript">
 
+            var map = L.map('map').setView([{{ inspection.latitude }}, {{ inspection.longitude }}], 15);
+            var mapquestLayer = new L.TileLayer('http://{s}.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.png', {
+                maxZoom: 18,
+                attribution: 'Data, imagery and map information provided by <a href="http://open.mapquest.co.uk" target="_blank">MapQuest</a>,<a href="http://www.openstreetmap.org/" target="_blank">OpenStreetMap</a> and contributors.',
+                subdomains: ['otile1','otile2','otile3','otile4']
+            });
+            map.addLayer(mapquestLayer);
+            var marker = L.marker([{{ inspection.latitude }}, {{ inspection.longitude }}]).addTo(map);
+
+        </script>
+   
         {% endfor %}
 
-
+        
 </div>
 
 {% include 'partials/foot.html' %}

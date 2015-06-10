@@ -1,3 +1,6 @@
+
+<!-- Not the best bar chart in the world, because I can't start from zero, but I did what I could by hand and with the Google template being what it is... and the very least, I think I understand the command path much better now. -->
+
 <script type="text/javascript">
       google.load("visualization", '1.1', {packages:['corechart']});
       google.setOnLoadCallback(drawChart);
@@ -6,11 +9,13 @@
 
         var datatable = google.visualization.arrayToDataTable(data);
         var options = {
-          width: 300,
-          height: 200,
+          width: 600,
+          height: 400,
           legend: { position: 'none' },
         };
         var chart = new google.visualization.PieChart(document.getElementById('{{ chart_div_id }}'));
         chart.draw(datatable, options);
     }
 </script>
+
+

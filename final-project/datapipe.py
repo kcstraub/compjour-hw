@@ -38,6 +38,7 @@ def filter_data():
             r['Latitude'].strip() != '' and
             r['Longitude'].strip() != '' and
             r['AKA Name'].strip() != '' and
+            r['AKA Name'] == r['AKA Name'].replace("/", " ") and
             'Fail' in r['Results']
         ):
             filteredrows.append(r)

@@ -1,6 +1,6 @@
 import csv
 import json
-csvfile = open('Schools_Failed_copy.csv', 'r')
+csvfile = open('failed_inspections.csv', 'r')
 all_failed = []
 for row in csv.DictReader(csvfile):
     all_failed.append(row)
@@ -22,4 +22,9 @@ vfinal = []
 for v in viols:
     
     vfinal.append(list(v))
+
+f = open("masterviolations.json", "w")
+j = json.dumps(vfinal, indent = 2)
+f.write(j)
+f.close()
  
