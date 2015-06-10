@@ -1,2 +1,4 @@
 .DS_Store
 data-hold/
+__pycache__/
+datastash/original-data.csv

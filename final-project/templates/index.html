@@ -1,0 +1,55 @@
+{% include 'partials/head.html' %}
+
+        <div class="container">
+            <h1> "Flunking": Failed Food Inspections in Chicago Schools, 2010-2015 </h1>
+            <h3> <i> Has your child's school failed a food inspection? </i> </h3>
+            <div id="map" style="width:100%; height:300px;"></div>
+
+
+
+
+
+
+  <h1>This is chart_div_id: {{chart_div_id}}</h1>
+
+    {% include "charts.html" %}
+    <div id="{{chart_div_id}}">
+
+    </div>
+
+
+
+
+
+
+
+            <h3 style = text-align:left; > <a href="/summary/"> In Summary </a></h3>
+            <div id="mychart" style="width: 50%; height: 200px;"></div>
+            <p> Breakdown: How?</p>
+
+            <table class="table table-condensed">
+                <tr>
+                    <th>School</th>
+                    <th>Risk Level</th>
+                    <th>Address</th>
+                    <th>Date of Failed Inspection</th>
+                    <th>Failed count</th>
+                </tr>
+            {% for school in schools %}
+                <tr>
+                    <td><a href="/schools/{{ school.aka_name }}/">{{ school.aka_name }}</td>
+                    <td>{{ school.risk }}</td>
+                    <td>{{ school.address }}</td>
+                    <td>{{ school.inspection_date_list | join(', ') }}</td>
+                    <td>{{school.inspection_count }}</td>
+                </tr>
+            {% endfor %}
+            </table>
+
+
+    {% include "partials/map_index.html" %}
+
+
+
+
+{% include 'partials/foot.html' %}
